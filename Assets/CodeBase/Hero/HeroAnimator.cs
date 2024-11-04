@@ -1,5 +1,5 @@
 using System;
-using CodeBase.Logic;
+using Assets.CodeBase.Logic;
 using UnityEngine;
 
 namespace Assets.CodeBase.Hero

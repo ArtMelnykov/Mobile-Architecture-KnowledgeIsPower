@@ -8,7 +8,6 @@ namespace Assets.CodeBase.CameraLogic
         public float Distance;
         public float OffsetY;
 
-        [SerializeField]
         private Transform _following;
 
         void LateUpdate()
@@ -17,15 +16,14 @@ namespace Assets.CodeBase.CameraLogic
                 return;
 
             Quaternion rotation = Quaternion.Euler(RotationAngleX, 0, 0);
-
             Vector3 position = rotation * new Vector3(0, 0, -Distance) + FollowingPointPosition();
 
-            transform.position = position;
             transform.rotation = rotation;
+            transform.position = position;
         }
 
         public void Follow(GameObject following) => 
-            _following = _following.transform;
+            _following = following.transform;
 
         private Vector3 FollowingPointPosition()
         {

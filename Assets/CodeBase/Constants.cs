@@ -1,4 +1,4 @@
-namespace CodeBase
+namespace Assets.CodeBase
 {
   public static class Constants
   {

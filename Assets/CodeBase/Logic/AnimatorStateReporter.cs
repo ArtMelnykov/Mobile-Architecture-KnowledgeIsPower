@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CodeBase.Logic
+namespace Assets.CodeBase.Logic
 {
   public class AnimatorStateReporter : StateMachineBehaviour
   {

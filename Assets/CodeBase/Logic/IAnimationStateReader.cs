@@ -1,4 +1,4 @@
-namespace CodeBase.Logic
+namespace Assets.CodeBase.Logic
 {
   public interface IAnimationStateReader
   {
