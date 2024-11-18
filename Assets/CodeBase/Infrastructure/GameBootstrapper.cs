@@ -1,4 +1,5 @@
-﻿using Assets.CodeBase.Logic;
+﻿using Assets.CodeBase.Infrastructure.States;
+using Assets.CodeBase.Logic;
 using UnityEngine;
 
 namespace Assets.CodeBase.Infrastructure

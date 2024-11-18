@@ -147,9 +147,9 @@ namespace SimpleInputNamespace
 			{
 				pointerInitialPos = Vector2.zero;
 
-				Vector3 joystickPos;
-				RectTransformUtility.ScreenPointToWorldPointInRectangle( dynamicJoystickMovementArea, eventData.position, eventData.pressEventCamera, out joystickPos );
-				joystickTR.position = joystickPos;
+				//Vector3 joystickPos;
+				//RectTransformUtility.ScreenPointToWorldPointInRectangle( dynamicJoystickMovementArea, eventData.position, eventData.pressEventCamera, out joystickPos );
+				//joystickTR.position = joystickPos;
 			}
 			else
 				RectTransformUtility.ScreenPointToLocalPointInRectangle( joystickTR, eventData.position, eventData.pressEventCamera, out pointerInitialPos );

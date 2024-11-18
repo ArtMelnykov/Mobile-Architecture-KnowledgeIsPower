@@ -1,20 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.CodeBase.Infrastructure.Factory;
+using Assets.CodeBase.Infrastructure.Services;
 using Assets.CodeBase.Logic;
 
-namespace Assets.CodeBase.Infrastructure
+namespace Assets.CodeBase.Infrastructure.States
 {
     public class GameStateMachine
     {
         private readonly Dictionary<Type, IExitableState> _states;
         private IExitableState _activeState;
 
-        public GameStateMachine(SceneLoader sceneLoader, LoadingCurtain curtain)                                              
+        public GameStateMachine(SceneLoader sceneLoader, LoadingCurtain curtain, ServiceLocator services)                                              
         {
             _states = new Dictionary<Type, IExitableState>()
             {
-                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, curtain),
+                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, curtain, services.Single<IGameFactory>()),
                 [typeof(GameLoopState)] = new GameLoopState(this)
             };
         }
@@ -25,10 +27,10 @@ namespace Assets.CodeBase.Infrastructure
             state.Enter();
         }
 
-        public void Enter<TState, TPlayload>(TPlayload playload) where TState : class, IPayloadedState<TPlayload>
+        public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadedState<TPayload>
         {
             var state = ChangeState<TState>();
-            state.Enter(playload);
+            state.Enter(payload);
         }
 
         private TState ChangeState<TState>() where TState : class, IExitableState
