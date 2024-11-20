@@ -1,8 +1,8 @@
-﻿using Assets.CodeBase.Infrastructure.States;
-using Assets.CodeBase.Logic;
+﻿using CodeBase.Infrastructure.States;
+using CodeBase.Logic;
 using UnityEngine;
 
-namespace Assets.CodeBase.Infrastructure
+namespace CodeBase.Infrastructure
 {
     public class GameBootstrapper : MonoBehaviour, ICoroutineRunner
     {
