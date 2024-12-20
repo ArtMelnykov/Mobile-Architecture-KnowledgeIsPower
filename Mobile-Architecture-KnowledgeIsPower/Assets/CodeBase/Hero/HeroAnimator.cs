@@ -2,7 +2,7 @@ using System;
 using CodeBase.Logic;
 using UnityEngine;
 
-namespace Assets.CodeBase.Hero
+namespace CodeBase.Hero
 {
   public class HeroAnimator : MonoBehaviour, IAnimationStateReader
   {

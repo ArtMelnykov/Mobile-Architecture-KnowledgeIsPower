@@ -1,4 +1,6 @@
-﻿namespace CodeBase.Infrastructure.Services
+﻿using UnityEditor.Experimental.GraphView;
+
+namespace CodeBase.Infrastructure.Services
 {
     public class ServiceLocator
     {
@@ -14,6 +16,6 @@
         private static class Implementation<TService> where TService : IService
         {
             public static TService ServiceInstance;
-        } 
+        }
     }
 }

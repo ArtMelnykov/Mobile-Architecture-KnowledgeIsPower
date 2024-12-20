@@ -11,6 +11,5 @@ namespace CodeBase.Editor
             PlayerPrefs.DeleteAll();
             PlayerPrefs.Save();
         }
-        
     }
 }

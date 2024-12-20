@@ -9,8 +9,8 @@ namespace CodeBase.CameraLogic
         public float OffsetY;
 
         private Transform _following;
-
-        void LateUpdate()
+        
+        private void LateUpdate()
         {
             if (_following == null)
                 return;
@@ -22,7 +22,7 @@ namespace CodeBase.CameraLogic
             transform.position = position;
         }
 
-        public void Follow(GameObject following) => 
+        public void Follow(GameObject following) =>
             _following = following.transform;
 
         private Vector3 FollowingPointPosition()

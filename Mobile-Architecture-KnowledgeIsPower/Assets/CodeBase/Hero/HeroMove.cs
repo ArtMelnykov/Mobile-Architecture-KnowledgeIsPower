@@ -15,17 +15,17 @@ namespace CodeBase.Hero
         private IInputService _inputService;
         private Camera _camera;
 
-        void Awake()
+        private void Awake()
         {
             _inputService = ServiceLocator.Container.Single<IInputService>();
         }
 
-        void Start()
+        private void Start()
         {
             _camera = Camera.main;
         }
 
-        void Update()
+        private void Update()
         {
             Vector3 movementVector = Vector3.zero;
 

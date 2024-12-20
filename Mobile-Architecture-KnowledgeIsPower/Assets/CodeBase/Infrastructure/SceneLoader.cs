@@ -33,7 +33,7 @@ namespace CodeBase.Infrastructure
 
                 yield return null;
             }
-
+            
             onLoaded?.Invoke();
         }
     }
