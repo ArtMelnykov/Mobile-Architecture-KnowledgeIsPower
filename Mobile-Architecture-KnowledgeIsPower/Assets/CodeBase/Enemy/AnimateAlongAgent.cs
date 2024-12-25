@@ -20,7 +20,7 @@ namespace CodeBase.Enemy
             }
             else
             {
-                EnemyAnimator.StopEnemyMoving();
+                EnemyAnimator.StopMoving();
             }
         }
 

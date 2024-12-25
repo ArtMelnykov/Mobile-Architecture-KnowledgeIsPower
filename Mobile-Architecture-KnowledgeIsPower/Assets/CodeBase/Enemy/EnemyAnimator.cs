@@ -30,9 +30,9 @@ namespace CodeBase.Enemy
         private void Awake() => 
             _animator = GetComponent<Animator>();
 
-        public void PlayEnemyHit() => _animator.SetTrigger(Hit);
+        public void PlayHit() => _animator.SetTrigger(Hit);
 
-        public void PlayEnemyDeath() => _animator.SetTrigger(Die);
+        public void PlayDeath() => _animator.SetTrigger(Die);
 
         public void MoveEnemy(float speed)
         {
@@ -40,9 +40,9 @@ namespace CodeBase.Enemy
             _animator.SetFloat(Speed, speed);
         }
 
-        public void StopEnemyMoving() => _animator.SetBool(IsMoving, false);
+        public void StopMoving() => _animator.SetBool(IsMoving, false);
 
-        public void PlayEnemyAttack() => _animator.SetTrigger(Attack);
+        public void PlayAttack() => _animator.SetTrigger(Attack);
 
         public void EnteredState(int stateHash)
         {

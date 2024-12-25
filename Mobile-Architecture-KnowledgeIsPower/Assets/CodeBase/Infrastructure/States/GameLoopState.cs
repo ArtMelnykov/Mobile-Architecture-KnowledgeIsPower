@@ -4,7 +4,7 @@
     {
         public GameLoopState(GameStateMachine stateMachine)
         {
-                
+            
         }
 
         public void Enter()

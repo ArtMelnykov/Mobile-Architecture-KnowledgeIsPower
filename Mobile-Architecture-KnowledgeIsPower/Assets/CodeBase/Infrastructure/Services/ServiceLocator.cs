@@ -1,6 +1,4 @@
-﻿using UnityEditor.Experimental.GraphView;
-
-namespace CodeBase.Infrastructure.Services
+﻿namespace CodeBase.Infrastructure.Services
 {
     public class ServiceLocator
     {
