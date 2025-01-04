@@ -29,7 +29,7 @@ namespace CodeBase.Hero
         {
             Vector3 movementVector = Vector3.zero;
 
-            if (_inputService.Axis.sqrMagnitude > Constants.Epsilon)
+            if (_inputService.Axis.sqrMagnitude > Constants.Constants.Epsilon)
             {
                 movementVector = _camera.transform.TransformDirection(_inputService.Axis);
                 movementVector.y = 0f;

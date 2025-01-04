@@ -1275,11 +1275,13 @@ GameObject:
   m_Component:
   - component: {fileID: 415700}
   - component: {fileID: 7359982750101208663}
-  - component: {fileID: 4245124329116833591}
   - component: {fileID: 9588594}
   - component: {fileID: 1941000699}
   - component: {fileID: -7113274607096029486}
   - component: {fileID: -4451802044997704003}
+  - component: {fileID: -3330318148332674013}
+  - component: {fileID: 7289732386107606392}
+  - component: {fileID: 2446329842395013630}
   m_Layer: 12
   m_Name: hero
   m_TagString: Player
@@ -1319,22 +1321,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!54 &4245124329116833591
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176288}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!95 &9588594
 Animator:
   serializedVersion: 3
@@ -1400,6 +1386,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterController: {fileID: -7113274607096029486}
   MovementSpeed: 4
+--- !u!114 &-3330318148332674013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb421bd15a00475db07b3071a49ae3ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 1941000699}
+--- !u!114 &7289732386107606392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b753da83f684478b2cb5e0b35f336ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeroHealth: {fileID: -3330318148332674013}
+  Move: {fileID: -4451802044997704003}
+  Animator: {fileID: 1941000699}
+  DeathFX: {fileID: 100004, guid: 221108992d6f9c040a20d319e2a86c3b, type: 3}
+  HeroAttack: {fileID: 2446329842395013630}
+  IsDead: 0
+--- !u!114 &2446329842395013630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34d439609fae4134975a235867b8564e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 1941000699}
+  Controller: {fileID: -7113274607096029486}
 --- !u!1 &178646
 GameObject:
   m_ObjectHideFlags: 0

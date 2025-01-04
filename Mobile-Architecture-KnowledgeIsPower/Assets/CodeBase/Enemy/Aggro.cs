@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using CodeBase.Hero;
 using UnityEngine;
 
 namespace CodeBase.Enemy
@@ -25,24 +26,27 @@ namespace CodeBase.Enemy
             SwitchFollowOff();
         }
 
+        private void OnDestroy()
+        {
+            _triggerObserver.TriggerEnter -= TriggerEnter;
+            _triggerObserver.TriggerExit -= TriggerExit;
+        }
+
         private void TriggerEnter(Collider other)
         {
-            if (!_hasAggroTarget)
-            {
-                _hasAggroTarget = true;
-                SwitchFollowOn();
-
-                StartCoroutine(SwitchFollowOffAfterCooldown());
-            }    
+            if (_hasAggroTarget)
+                return;   
+            
+            StopAggroCoroutine();
+            SwitchFollowOn();
         }
 
         private void TriggerExit(Collider other)
         {
-            if (_hasAggroTarget)
-            {
-                _hasAggroTarget = false;
-                _aggroCoroutine = StartCoroutine(SwitchFollowOffAfterCooldown());
-            }
+            if (!_hasAggroTarget)
+                return;
+
+            _aggroCoroutine = StartCoroutine(SwitchFollowOffAfterCooldown());
         }
 
         private IEnumerator SwitchFollowOffAfterCooldown()
@@ -54,17 +58,23 @@ namespace CodeBase.Enemy
 
         private void StopAggroCoroutine()
         {
-            if (_aggroCoroutine != null)
-            {
-                StopCoroutine(_aggroCoroutine);
-                _aggroCoroutine = null;
-            }
+            if (_aggroCoroutine == null)
+                return;
+            
+            StopCoroutine(_aggroCoroutine);
+            _aggroCoroutine = null;
         }
 
-        private void SwitchFollowOn() => 
+        private void SwitchFollowOn()
+        {
+            _hasAggroTarget = true;
             _follow.enabled = true;
+        }
 
-        private void SwitchFollowOff() => 
+        private void SwitchFollowOff()
+        {
+            _hasAggroTarget = false;
             _follow.enabled = false;
+        }
     }
 }

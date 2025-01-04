@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using CodeBase.Infrastructure.Factory;
 using CodeBase.Infrastructure.Services;
+using CodeBase.Logic;
 using UnityEngine;
 
 namespace CodeBase.Enemy
@@ -11,7 +12,8 @@ namespace CodeBase.Enemy
         public float AttackCooldown = 3f;
         public float Cleavage = 0.5f;
         public float EffectiveDistance = 0.5f;
-
+        public float Damage = 10f;
+        
         [SerializeField]
         private EnemyAnimator _enemyAnimator;
 
@@ -44,6 +46,8 @@ namespace CodeBase.Enemy
             if (Hit(out Collider hit))
             {
                 PhysicsDebug.DrawDebug(StartPoint(), Cleavage, 1f);
+                
+                hit.transform.GetComponent<IHealth>().TakeDamage(Damage);
             }
         }
         

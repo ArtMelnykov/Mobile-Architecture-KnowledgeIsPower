@@ -1,4 +1,5 @@
-﻿using CodeBase.Infrastructure.Factory;
+﻿using CodeBase.Data;
+using CodeBase.Infrastructure.Factory;
 using CodeBase.Infrastructure.Services;
 using UnityEngine;
 using UnityEngine.AI;
@@ -31,13 +32,11 @@ namespace CodeBase.Enemy
 
         private void Update()
         {
-            if (IsPlayerFarEnough() && Initialized())
-            {
+            if (IsHeroNotReached() && IsInitialized()) 
                 Agent.destination = _heroTransform.position;
-            }
         }
 
-        private bool Initialized() => 
+        private bool IsInitialized() => 
             _heroTransform != null;
 
         private void HeroCreated() => 
@@ -46,7 +45,7 @@ namespace CodeBase.Enemy
         private void InitializeHeroTransform() => 
             _heroTransform = _gameFactory.HeroGameObject.transform;
 
-        private bool IsPlayerFarEnough() => 
-            Vector3.Distance(Agent.transform.position, _heroTransform.position) > MinimalDistance;
+        private bool IsHeroNotReached() => 
+            Agent.transform.position.SqrMagnitudeTo(_heroTransform.position) >= MinimalDistance;
     }
 }

@@ -21,5 +21,10 @@ namespace CodeBase.Data
 
         public static string ToJson(this object obj) => 
             JsonUtility.ToJson(obj);
+
+        public static float SqrMagnitudeTo(this Vector3 from, Vector3 to)
+        {
+            return Vector3.SqrMagnitude(to - from);
+        }
     }
 }

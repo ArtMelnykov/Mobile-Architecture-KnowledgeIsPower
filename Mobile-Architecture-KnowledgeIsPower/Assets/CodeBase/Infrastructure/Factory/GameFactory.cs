@@ -25,10 +25,10 @@ namespace CodeBase.Infrastructure.Factory
             return HeroGameObject;
         }
 
-        public void CreateHud()
+        public GameObject CreateHud()
         {
             string prefabPath = AssetPath.HudPath;
-            InstantiateRegistered(prefabPath);
+            return InstantiateRegistered(prefabPath);
         }
 
         public void Cleanup()
