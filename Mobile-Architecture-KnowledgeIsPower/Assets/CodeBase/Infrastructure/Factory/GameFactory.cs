@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.Services.PersistentProgress;
+using CodeBase.Logic;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.Factory
@@ -51,6 +52,22 @@ namespace CodeBase.Infrastructure.Factory
             return gameObject;
         }
 
+        private void RegisterProgressWatchers(GameObject gameObject)
+        {
+            foreach (ISavedProgressReader progressReader in gameObject.GetComponentsInChildren<ISavedProgressReader>())
+            {
+                Register(progressReader);
+            }
+        }
+
+        public void RegisterProgressWatchers(EnemySpawner spawner)
+        {
+            foreach (ISavedProgressReader progressReader in spawner.GetComponentsInChildren<ISavedProgressReader>())
+            {
+                Register(progressReader);
+            }
+        }
+
         private void Register(ISavedProgressReader progressReader)
         {
             if (progressReader is ISavedProgress progressWriter)
@@ -59,14 +76,6 @@ namespace CodeBase.Infrastructure.Factory
             }
             
             ProgressReaders.Add(progressReader);
-        }
-
-        private void RegisterProgressWatchers(GameObject gameObject)
-        {
-            foreach (ISavedProgressReader progressReader in gameObject.GetComponentsInChildren<ISavedProgressReader>())
-            {
-                Register(progressReader);
-            }
         }
     }
 }
